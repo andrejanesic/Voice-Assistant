@@ -10,3 +10,7 @@ dev:
 test:
     ./env/Scripts/activate
     python -m tests
+
+build:
+    ./env/Scripts/activate
+    python setup.py sdist

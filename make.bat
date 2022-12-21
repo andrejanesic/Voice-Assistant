@@ -24,4 +24,11 @@ if "%1" == "test" (
 	goto end
 )
 
+if "%1" == "build" (
+	:init
+    call .\env\Scripts\activate.bat
+	python setup.py sdist
+	goto end
+)
+
 :end
