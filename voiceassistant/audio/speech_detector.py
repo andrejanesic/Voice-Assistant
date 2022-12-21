@@ -4,7 +4,7 @@ from ..core.iaudio import IAudio
 from .audio import Audio
 from .. import constants
 import numpy as np
-from types import List
+from typing import List
 
 
 def endpointing(audio: IAudio, p: int = 0, r: int = 0) -> tuple:
@@ -21,19 +21,19 @@ def endpointing(audio: IAudio, p: int = 0, r: int = 0) -> tuple:
     # Get the number of frames for the first 100ms.
     initial_t = 100
     initial_t = round((audio.get_framerate()) * initial_t / 1000)
-    initial_f = np.absolute(audio.values[:initial_t])
+    initial_f = np.absolute(audio.get_values()[:initial_t])
 
     # Noise limit.
     noise_l = np.average(initial_f) + 2 * initial_f.std()
-    noise_mask = np.zeros(audio.values.shape)
+    noise_mask = np.zeros(audio.get_values().shape)
 
     # Window width (ms) for noise detection.
     window_w = 10
     window_w = round(audio.get_framerate() * window_w / 100)
 
     i = 0
-    while i < len(audio.values):
-        window_avg = np.average(np.absolute(audio.values[i:(i+window_w)]))
+    while i < len(audio.get_values()):
+        window_avg = np.average(np.absolute(audio.get_values()[i:(i+window_w)]))
         j = 1 if window_avg > noise_l else 0
         noise_mask[i:(i+window_w)] = j
         i += window_w
@@ -97,7 +97,7 @@ def extract_speech(audio: IAudio, p: int = 0, r: int = 0) -> List[IAudio]:
         return []
 
     words_raw = []
-    values_cleaned = np.multiply(audio.values, noise_mask)
+    values_cleaned = np.multiply(audio.get_values(), noise_mask)
     i = 0
     while i < len(noise_borders):
         ind_l = int(noise_borders[i] * audio.get_framerate())
