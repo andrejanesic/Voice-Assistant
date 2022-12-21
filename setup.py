@@ -18,5 +18,5 @@ setup(
     author_email='office@andrejanesic.com',
     url='https://github.com/ntadicrn4419/Voice-Assistant',
     license=license,
-    packages=['voiceassistant', 'voiceassistant.test']
+    packages=['voiceassistant']
 )
