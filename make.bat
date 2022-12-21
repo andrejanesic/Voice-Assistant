@@ -10,9 +10,17 @@ if "%1" == "init" (
 	goto end
 )
 
+if "%1" == "dev" (
+	:init
+    call .\env\Scripts\activate.bat
+	python -m voiceassistant
+	goto end
+)
+
 if "%1" == "test" (
-	REM Todo add test
-	REM nosetests tests
+	:init
+    call .\env\Scripts\activate.bat
+	python -m tests
 	goto end
 )
 

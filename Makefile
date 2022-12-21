@@ -3,6 +3,10 @@ init:
     ./env/Scripts/activate
 	pip install -r requirements.txt
 
-# TODO add test
-#test:
-#	nosetests tests
+dev:
+    ./env/Scripts/activate
+    python -m voiceassistant
+
+test:
+    ./env/Scripts/activate
+    python -m tests
