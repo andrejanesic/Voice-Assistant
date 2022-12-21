@@ -2,7 +2,8 @@
 
 import wave
 import numpy as np
-from .. import constants
+from ..core import constants
+from ..core import helpers
 from .audio import Audio
 from ..core.iaudio import IAudio
 from typing import Optional
@@ -18,7 +19,7 @@ def load_wave(filename: str) -> Optional[IAudio]:
     try:
         wav = wave.open(filename, "r")
     except FileNotFoundError:
-        print(constants.ERR_FILE_NOT_EXIST % filename)
+        helpers.log(constants.ERR_FILE_NOT_EXIST % filename)
         return None
 
     vals = np.frombuffer(wav.readframes(-1), np.int16)

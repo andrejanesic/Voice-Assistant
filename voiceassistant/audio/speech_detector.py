@@ -2,7 +2,8 @@
 
 from ..core.iaudio import IAudio
 from .audio import Audio
-from .. import constants
+from ..core import constants
+from ..core import helpers
 import numpy as np
 from typing import List
 
@@ -88,11 +89,11 @@ def extract_speech(audio: IAudio, p: int = 0, r: int = 0) -> List[IAudio]:
     # Check if we detected any speech borders
     speech_detected = noise_mask.sum() > 0
     if speech_detected == False:
-        print(constants.ERR_NO_WORDS_FOUND)
+        helpers.log(constants.ERR_NO_WORDS_FOUND)
         return []
 
     if len(noise_borders) % 2 == 1:
-        print(constants.ERR_ODD_WORD_INDICES_COUNT %
+        helpers.log(constants.ERR_ODD_WORD_INDICES_COUNT %
               len(noise_borders))
         return []
 
@@ -114,5 +115,5 @@ def extract_speech(audio: IAudio, p: int = 0, r: int = 0) -> List[IAudio]:
                   )
         )
 
-    print(f"Extracted {len(words)} words")
+    helpers.log(f"Extracted {len(words)} words")
     return words
