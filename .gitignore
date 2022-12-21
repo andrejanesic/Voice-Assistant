@@ -1,5 +1,2 @@
 ### Python Virtual Env ###
-Include/
-Lib/
-Scripts/
-pyvenv.cfg
+env/
