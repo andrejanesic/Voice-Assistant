@@ -2,7 +2,7 @@
 
 # Learn more: https://github.com/kennethreitz/setup.py
 
-from setuptools import setup, find_packages
+from distutils.core import setup
 
 
 with open('README.rst') as f:
@@ -20,5 +20,5 @@ setup(
     author_email='office@andrejanesic.com',
     url='https://github.com/ntadicrn4419/Voice-Assistant',
     license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=['voiceassistant', 'voiceassistant.test']
 )
