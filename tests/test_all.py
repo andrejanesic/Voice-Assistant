@@ -5,7 +5,8 @@ import numpy as np
 import os
 from voiceassistant import main
 from voiceassistant.core.iaudio import IAudio
-from voiceassistant.audio import recorder, loader, speech_detector
+from voiceassistant.audio import recorder, loader, speech_detector, player
+from voiceassistant.text2speech import text2speech
 
 
 TESTS_RES = os.path.dirname(os.path.realpath(__file__)) + '/res'
@@ -66,3 +67,8 @@ class AllTestSuite(unittest.TestCase):
 
         for i in range(4):
             self.assertTrue(np.array_equal(word_vals[i], speech[i].get_values()))
+
+    def test_text2speech(self):
+        text = "Test speech here"
+        aud = text2speech.generate(text)
+        player.play(aud)
