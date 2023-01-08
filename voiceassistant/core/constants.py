@@ -8,4 +8,4 @@ PARAM_EXTRACT_P = 2000
 PARAM_EXTRACT_R = 7500
 LOG_PREFIX_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 LOG_TYPES = ["ERROR", "WARNING", "INFO", "DEBUG"]
-AUDIO_OUT = "./audio_out.mp4"
+AUDIO_OUT = "./audio_out.wav"
