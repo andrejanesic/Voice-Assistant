@@ -73,4 +73,12 @@ class AllTestSuite(unittest.TestCase):
         text = "Test speech here"
         file_path = AUDIO_OUT
         aud = text2speech.generate(text, file_path)
+
+        # sound test
         player.play(aud)
+
+        self.assertTrue(os.path.exists(file_path))
+        self.assertTrue(os.path.getsize(file_path) > 0)
+
+        # cleanup
+        os.unlink(file_path)
