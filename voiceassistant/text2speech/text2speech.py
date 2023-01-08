@@ -7,9 +7,9 @@ from tensorflow_tts.inference import AutoProcessor
 import soundfile as sf
 
 from ..core.iaudio import IAudio
-from ..audio.audio import Audio
+from ..audio.loader import load_wave
 
-def generate(text: str) -> IAudio:
+def generate(text: str, file_path: str) -> IAudio:
     """
     Generates speech from passed text parameter using
     Tacotron 2 (pretrained on LJSpeech.)
@@ -42,12 +42,9 @@ def generate(text: str) -> IAudio:
 
     # melgan inference
     audio_before = mb_melgan.inference(mel_before)[0, :, 0]
-    audio_after = mb_melgan.inference(mel_after)[0, :, 0]
+    # audio_after = mb_melgan.inference(mel_after)[0, :, 0]
 
-    print(audio_before)
-    print(audio_after)
-    print(audio_before == audio_after)
     # save to file
-    sf.write('./audio_before.wav', audio_before, 22050, "PCM_16")
-    sf.write('./audio_after.wav', audio_after, 22050, "PCM_16")
-    return Audio(values=audio_before.numpy(), framerate=22050, sample_width=16/8)
+    sf.write(file_path, audio_before, 22050, "PCM_16")
+    # sf.write('./audio_after.wav', audio_after, 22050, "PCM_16")
+    return load_wave(filename=file_path)

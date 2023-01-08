@@ -7,6 +7,7 @@ from voiceassistant import main
 from voiceassistant.core.iaudio import IAudio
 from voiceassistant.audio import recorder, loader, speech_detector, player
 from voiceassistant.text2speech import text2speech
+from voiceassistant.core.constants import AUDIO_OUT
 
 
 TESTS_RES = os.path.dirname(os.path.realpath(__file__)) + '/res'
@@ -70,5 +71,6 @@ class AllTestSuite(unittest.TestCase):
 
     def test_text2speech(self):
         text = "Test speech here"
-        aud = text2speech.generate(text)
+        file_path = AUDIO_OUT
+        aud = text2speech.generate(text, file_path)
         player.play(aud)

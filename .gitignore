@@ -91,3 +91,6 @@ ENV/
 
 # IDEs
 .vscode/
+
+# Intermediate output
+./audio_out.mp4
