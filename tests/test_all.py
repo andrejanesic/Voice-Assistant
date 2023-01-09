@@ -7,15 +7,14 @@ from voiceassistant import main
 from voiceassistant.core.iaudio import IAudio
 from voiceassistant.audio import recorder, loader, speech_detector, player
 from voiceassistant.text2speech import text2speech
+from voiceassistant.speech2text import speech2text
+from voiceassistant.core.constants import AUDIO_OUT
 
 
 TESTS_RES = os.path.dirname(os.path.realpath(__file__)) + '/res'
 
 class AllTestSuite(unittest.TestCase):
     """All test cases."""
-
-    def test_absolute_truth(self):
-        assert True
 
     def test_imported_module(self):
         self.assertIsNone(main.main())
@@ -70,5 +69,19 @@ class AllTestSuite(unittest.TestCase):
 
     def test_text2speech(self):
         text = "Test speech here"
-        aud = text2speech.generate(text)
+        file_path = AUDIO_OUT
+        aud = text2speech.generate(text, file_path)
+
+        # sound test
         player.play(aud)
+
+        self.assertTrue(os.path.exists(file_path))
+        self.assertTrue(os.path.getsize(file_path) > 0)
+
+        # cleanup
+        os.unlink(file_path)
+
+    def test_speech2text(self):
+        file_path = f"{TESTS_RES}/how-much-is-bitcoin-worth.wav"
+        text = speech2text.transcribe(file_path)
+        self.assertEquals(text, "how much is bitcoin worth")

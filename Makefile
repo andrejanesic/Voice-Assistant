@@ -3,6 +3,9 @@ init:
     ./env/Scripts/activate
 	pip install -r requirements.txt
 
+models:
+    python res/setup.py
+
 dev:
     ./env/Scripts/activate
     python -m voiceassistant

@@ -10,6 +10,12 @@ if "%1" == "init" (
 	goto end
 )
 
+if "%1" == "models" (
+	:init
+    python res/setup.py
+	goto end
+)
+
 if "%1" == "dev" (
 	:init
     call .\env\Scripts\activate.bat
