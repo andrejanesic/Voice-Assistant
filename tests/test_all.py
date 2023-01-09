@@ -10,6 +10,8 @@ from voiceassistant.text2speech import text2speech
 from voiceassistant.speech2text import speech2text
 from voiceassistant.nlp import nlp
 from voiceassistant.core.constants import AUDIO_OUT
+from voiceassistant.speech2text import speech2text
+from voiceassistant.core.constants import AUDIO_OUT
 
 
 TESTS_RES = os.path.dirname(os.path.realpath(__file__)) + '/res'
@@ -74,6 +76,10 @@ class AllTestSuite(unittest.TestCase):
 
     def test_text2speech(self):
         text = "Test speech here"
+        file_path = AUDIO_OUT
+        aud = text2speech.generate(text, file_path)
+
+        # sound test
         file_path = AUDIO_OUT
         aud = text2speech.generate(text, file_path)
 
