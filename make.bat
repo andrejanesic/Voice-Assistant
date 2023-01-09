@@ -7,6 +7,13 @@ if "%1" == "init" (
     python -m venv env
     call .\env\Scripts\activate.bat
 	pip install -r requirements.txt
+    python res/setup.py
+	goto end
+)
+
+if "%1" == "models" (
+	:init
+    python res/setup.py
 	goto end
 )
 

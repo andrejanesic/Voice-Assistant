@@ -7,16 +7,16 @@ from voiceassistant import main
 from voiceassistant.core.iaudio import IAudio
 from voiceassistant.audio import recorder, loader, speech_detector, player
 from voiceassistant.text2speech import text2speech
+from voiceassistant.speech2text import speech2text
+from voiceassistant.nlp import nlp
 from voiceassistant.core.constants import AUDIO_OUT
 
 
 TESTS_RES = os.path.dirname(os.path.realpath(__file__)) + '/res'
 
+
 class AllTestSuite(unittest.TestCase):
     """All test cases."""
-
-    def test_absolute_truth(self):
-        assert True
 
     def test_imported_module(self):
         self.assertIsNone(main.main())
@@ -42,15 +42,17 @@ class AllTestSuite(unittest.TestCase):
         aud = loader.load_wave(f'{TESTS_RES}/smile-for-camera/test.wav')
         self.assertIsInstance(aud, IAudio)
         self.assertTrue(np.array_equal(expected_values, aud.get_values()))
-        self.assertTrue(np.array_equal(expected_sample_width, aud.get_sample_width()))
-        self.assertTrue(np.array_equal(expected_framerate, aud.get_framerate()))
+        self.assertTrue(np.array_equal(
+            expected_sample_width, aud.get_sample_width()))
+        self.assertTrue(np.array_equal(
+            expected_framerate, aud.get_framerate()))
 
     def test_endpointing(self):
         with open(f'{TESTS_RES}/smile-for-camera/test-noise-mask.npy', 'rb') as f:
             expected_noise_mask = np.load(f, encoding='bytes')
         with open(f'{TESTS_RES}/smile-for-camera/test-noise-borders.npy', 'rb') as f:
             expected_noise_borders = np.load(f, encoding='bytes')
-        
+
         aud = loader.load_wave(f'{TESTS_RES}/smile-for-camera/test.wav')
         noise_mask, noise_border = speech_detector.endpointing(aud)
         self.assertTrue(np.array_equal(expected_noise_mask, noise_mask))
@@ -67,7 +69,8 @@ class AllTestSuite(unittest.TestCase):
         self.assertEqual(len(speech), 4)
 
         for i in range(4):
-            self.assertTrue(np.array_equal(word_vals[i], speech[i].get_values()))
+            self.assertTrue(np.array_equal(
+                word_vals[i], speech[i].get_values()))
 
     def test_text2speech(self):
         text = "Test speech here"
@@ -82,3 +85,16 @@ class AllTestSuite(unittest.TestCase):
 
         # cleanup
         os.unlink(file_path)
+
+    def test_speech2text(self):
+        file_path = f"{TESTS_RES}/how-much-is-bitcoin-worth.wav"
+        text = speech2text.transcribe(file_path)
+        self.assertEquals(text, "how much is bitcoin worth")
+
+    def test_nlp(self):
+        self.assertEquals(
+            nlp.analyze("i love this city"), "love")
+        self.assertEquals(
+            nlp.analyze("i absolutely hate bowling"), "anger")
+        self.assertEquals(
+            nlp.analyze("seeing romeo die, julia burst into tears"), "sadness")

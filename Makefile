@@ -2,6 +2,10 @@ init:
     python -m venv env
     ./env/Scripts/activate
 	pip install -r requirements.txt
+    python res/setup.py
+
+models:
+    python res/setup.py
 
 dev:
     ./env/Scripts/activate

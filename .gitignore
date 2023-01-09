@@ -94,3 +94,9 @@ ENV/
 
 # Intermediate output
 ./audio_out.mp4
+
+# Models
+res/nlp
+res/wav2vec
+res/nlp.zip
+res/wav2vec.zip

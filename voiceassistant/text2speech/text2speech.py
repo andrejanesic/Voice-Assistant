@@ -12,7 +12,7 @@ from ..audio.loader import load_wave
 def generate(text: str, file_path: str) -> IAudio:
     """
     Generates speech from passed text parameter using
-    Tacotron 2 (pretrained on LJSpeech.)
+    FastSpeech2 (pretrained on LJSpeech.)
     """
     # initialize fastspeech2 model.
     fastspeech2 = TFAutoModel.from_pretrained(

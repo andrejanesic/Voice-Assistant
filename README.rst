@@ -16,6 +16,13 @@ This project involves the creation of a miniature *voice assistant* app. The sys
 
 The project relies on deep learning methods (transformers and NLP models) for text-to-speech, sentiment analysis, speech-to-text, etc.
 
+Setup & Installation
+--------------------
+
+Please run `./make` (Linux) or `.\make.bat` (Windows) to set up the package. This will create a new Python `virtual environment <https://docs.python.org/3/library/venv.html>`__ and install the required dependencies.
+
+*#TODO add other available Make commands*
+
 Authors
 -------
 
