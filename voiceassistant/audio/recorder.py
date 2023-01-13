@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 
-# Code based on the following StackOverflow answer:
+# Code based on the following StackOverflow answers:
 # https://stackoverflow.com/a/6743593
+# https://stackoverflow.com/questions/40782159/writing-wav-file-using-python-numpy-array-and-wave-module
 
 from ..core.iaudio import IAudio
+from ..core import helpers, constants
 from .audio import Audio
 from sys import byteorder
 from array import array
+import numpy as np
 import pyaudio
 import time
+import wave
 
 
 def normalize(snd_data: array, maximum: int = 16384) -> array:
@@ -26,7 +30,8 @@ def record(
     format: any = pyaudio.paInt16,
     framerate: int = 44100,
     chunk_size: int = 1024,
-    dur: float = -1.0
+    dur: float = -1.0,
+    file_path: str = None
 ) -> IAudio:
     """
     Record a word or words from the microphone and 
@@ -59,6 +64,7 @@ def record(
                     break
 
     except KeyboardInterrupt:
+        helpers.log(constants.PRINT_RECORDING_DONE)
         pass
 
     sample_width = p.get_sample_size(format)
@@ -67,6 +73,14 @@ def record(
     p.terminate()
 
     r = normalize(r)
-    return Audio(values=r,
+    
+    if file_path:
+        with wave.open(file_path, "w") as f:
+            f.setnchannels(1)
+            f.setsampwidth(sample_width)
+            f.setframerate(framerate)
+            f.writeframes(r.tobytes())
+
+    return Audio(values=np.asarray(r),
                  framerate=framerate,
                  sample_width=sample_width)

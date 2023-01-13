@@ -93,7 +93,8 @@ ENV/
 .vscode/
 
 # Intermediate output
-./audio_out.mp4
+audio_in.wav
+audio_out.wav
 
 # Models
 res/nlp
