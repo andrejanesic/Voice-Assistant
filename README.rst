@@ -1,7 +1,7 @@
 Voice Assistant
 ===============
 
-Miniature voice assistant developed in Python with Tensorflow/Keras. Group assignment conducted as part of the Voice Recognition (5025) and Deep Learning (8032) subjects.
+Personal voice assistant developed in Python with Tensorflow/Keras. Group assignment conducted as part of the Voice Recognition (5025) and Deep Learning (8032) subjects.
 
 Project Specs
 -------------
@@ -26,21 +26,21 @@ Please run `./make` (Linux) or `.\make.bat` (Windows) to set up the package. Thi
 Authors
 -------
 
-*In alphabetical order (by surname):*
+*In alphabetical order:*
 
-| **Luka Brcic** \[`LinkedIn <https://www.linkedin.com/in/luka-brcic-5120b8197/>`__\]
+| **Brcic, Luka** \[`LinkedIn <https://www.linkedin.com/in/luka-brcic-5120b8197/>`__\]
 | Software Engineer @ `Seven Bridges <https://www.sevenbridges.com/>`__
 | Comp Sci Undergrad @ `School of Computing, Belgrade <https://www.linkedin.com/school/racunarski-fakultet/>`__
 | lbrcic4219rn@raf.rs
 | 
 
-| **Andreja Nesic** \[`LinkedIn <https://www.linkedin.com/in/andreja-nesic/>`__\]
+| **Nesic, Andreja** \[`LinkedIn <https://www.linkedin.com/in/andreja-nesic/>`__\]
 | Comp Sci Undergrad @ `School of Computing, Belgrade <https://www.linkedin.com/school/racunarski-fakultet/>`__
 | office@andrejanesic.com
 | anesic3119rn@raf.rs
 | 
 
-| **Nikola Tadic** \[`LinkedIn <https://www.linkedin.com/in/nikola-tadi%C4%87-01112000/>`__\]
+| **Tadic, Nikola** \[`LinkedIn <https://www.linkedin.com/in/nikola-tadi%C4%87-01112000/>`__\]
 | Frontend Developer @ `Insightful <https://www.insightful.io/>`__
 | Comp Sci Undergrad @ `School of Computing, Belgrade <https://www.linkedin.com/school/racunarski-fakultet/>`__
 | ntadic4419rn@raf.rs
