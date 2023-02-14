@@ -21,14 +21,22 @@ Setup & Installation
 
 Please run `./make` (Linux) or `.\make.bat` (Windows) to set up the package. This will create a new Python `virtual environment <https://docs.python.org/3/library/venv.html>`__ and install the required dependencies; the script will also download the required NLP wav-2-vec model files.
 
-After that, you may use `./make dev` to run the program.
-
 Other available Make commands include:
 
 - `./make models` - downloads the deep learning models
 - `./make dev` - runs the script
 - `./make test` - runs the test script
 - `./make build` - builds the Python package
+
+Running
+-------
+
+The script connects to external APIs to fetch data. For this to work, you'll need a free `RapidAPI account <https://rapidapi.com/hub>`__.
+
+After creating an account, find the key of your `default application <https://rapidapi.com/developer/apps>`__. Copy the key, then run the following command::
+
+   ./make.bat dev API_KEY       # If you're on Windows
+   ./make dev APIKEY="API_KEY"  # If you're on Linux
 
 Authors
 -------
