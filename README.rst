@@ -19,9 +19,16 @@ The project relies on deep learning methods (transformers and NLP models) for te
 Setup & Installation
 --------------------
 
-Please run `./make` (Linux) or `.\make.bat` (Windows) to set up the package. This will create a new Python `virtual environment <https://docs.python.org/3/library/venv.html>`__ and install the required dependencies.
+Please run `./make` (Linux) or `.\make.bat` (Windows) to set up the package. This will create a new Python `virtual environment <https://docs.python.org/3/library/venv.html>`__ and install the required dependencies; the script will also download the required NLP wav-2-vec model files.
 
-*#TODO add other available Make commands*
+After that, you may use `./make dev` to run the program.
+
+Other available Make commands include:
+
+- `./make models` - downloads the deep learning models
+- `./make dev` - runs the script
+- `./make test` - runs the test script
+- `./make build` - builds the Python package
 
 Authors
 -------
