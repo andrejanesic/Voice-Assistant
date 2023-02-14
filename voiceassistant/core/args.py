@@ -22,6 +22,15 @@ def init_args() -> None:
         dest='verbose'
     )
 
+    # RapidAPI Key
+    parser.add_argument(
+        '-k',
+        '--key',
+        action='store',
+        required=True,
+        dest='apikey'
+    )
+
     parsed = parser.parse_args()
     if not parsed:
         # Error in parsing

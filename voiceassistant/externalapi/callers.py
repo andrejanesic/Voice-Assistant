@@ -10,6 +10,7 @@ from unidecode import unidecode
 import requests
 from typing import Optional, List
 import re
+from ..core import state
 
 _geos, _cryptos = set(), dict()
 
@@ -34,7 +35,7 @@ def load_geos() -> None:
     for i in tqdm(range(1, math.ceil(iters))):
         querystring = {"page": str(i), "pageSize": str(page_size)}
         headers = {
-            "X-RapidAPI-Key": "35ba785d42msh5eb4b083f2b0c8ap1d92fcjsn658f2fc14393",
+            "X-RapidAPI-Key": state.args.apikey,
             "X-RapidAPI-Host": "geography2.p.rapidapi.com"
         }
 
@@ -60,7 +61,7 @@ def load_cryptos() -> None:
     url = "https://cryptocurrency-markets.p.rapidapi.com/coins"
 
     headers = {
-        "X-RapidAPI-Key": "35ba785d42msh5eb4b083f2b0c8ap1d92fcjsn658f2fc14393",
+        "X-RapidAPI-Key": state.args.apikey,
         "X-RapidAPI-Host": "cryptocurrency-markets.p.rapidapi.com"
     }
 
@@ -104,7 +105,7 @@ def weather_api(loc: str):
     querystring = {"q": loc}
 
     headers = {
-        "X-RapidAPI-Key": "1c5cc987b0msh1934f48c2cbe4b0p18f6c6jsnfab82281d5cc",
+        "X-RapidAPI-Key": state.args.apikey,
         "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
     }
 
@@ -146,7 +147,7 @@ def crypto_api(coin: str) -> str:
     querystring = {"key": _cryptos[coin]}
 
     headers = {
-        "X-RapidAPI-Key": "35ba785d42msh5eb4b083f2b0c8ap1d92fcjsn658f2fc14393",
+        "X-RapidAPI-Key": state.args.apikey,
         "X-RapidAPI-Host": "cryptocurrency-markets.p.rapidapi.com"
     }
 
@@ -182,7 +183,7 @@ def joke_api() -> str:
     url = "https://dad-jokes.p.rapidapi.com/random/joke"
 
     headers = {
-        "X-RapidAPI-Key": "35ba785d42msh5eb4b083f2b0c8ap1d92fcjsn658f2fc14393",
+        "X-RapidAPI-Key": state.args.apikey,
         "X-RapidAPI-Host": "dad-jokes.p.rapidapi.com"
     }
 
@@ -208,7 +209,7 @@ def flights_api(loc: str) -> str:
     querystring = {"query": loc}
 
     headers = {
-        "X-RapidAPI-Key": "35ba785d42msh5eb4b083f2b0c8ap1d92fcjsn658f2fc14393",
+        "X-RapidAPI-Key": state.args.apikey,
         "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com"
     }
 
@@ -246,7 +247,7 @@ def flights_api(loc: str) -> str:
     }
 
     headers = {
-        "X-RapidAPI-Key": "35ba785d42msh5eb4b083f2b0c8ap1d92fcjsn658f2fc14393",
+        "X-RapidAPI-Key": state.args.apikey,
         "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com"
     }
 
