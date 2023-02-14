@@ -24,8 +24,6 @@ def main() -> None:
 
     # run loop
     while True:
-        # TODO DEBUG
-        state.args.verbose = True
         try:
             print(constants.PRINT_HELPER)
 

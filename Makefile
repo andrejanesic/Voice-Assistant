@@ -9,7 +9,7 @@ models:
 
 dev:
     ./env/Scripts/activate
-    python -m voiceassistant
+    python -m voiceassistant --key $(APIKEY)
 
 test:
     ./env/Scripts/activate

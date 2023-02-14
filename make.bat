@@ -20,7 +20,7 @@ if "%1" == "models" (
 if "%1" == "dev" (
 	:init
     call .\env\Scripts\activate.bat
-	python -m voiceassistant
+	python -m voiceassistant --key "%2"
 	goto end
 )
 

@@ -36,7 +36,6 @@ def analyze(inp: str) -> str:
     )
 
     torch_inputs = torch.tensor(inp)
-    attention_mask = []  # TODO
     attention_mask = torch.tensor([float(i > 0) for i in inp])
 
     torch_inputs = torch_inputs.reshape(1, -1)

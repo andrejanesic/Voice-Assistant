@@ -29,7 +29,6 @@ def load_wave(filename: str) -> Optional[IAudio]:
         ch1 = vals[0::2]
         ch2 = vals[1::2]
 
-        # TODO this might be an SPOF, because we're averaging the two channels with floor division.
         vals = (ch1 + ch2) // 2
 
     return Audio(
